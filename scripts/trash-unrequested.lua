@@ -16,6 +16,7 @@ local function update_character_requests(character)
   for _, inventory_id in pairs(inventories_to_check) do
     local inventory = character.get_inventory(inventory_id)
     if inventory then
+      -- FIXME: This won't work because we need to check against the total count in all inventories
       for name, count in pairs(inventory.get_contents()) do
         local requested_count = requests[name] or 0
         if requested_count < count then
